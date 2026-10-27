@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect with Aditya | Contact</title>
+  <style>
+    /* CSS Reset & Custom Properties */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-primary: #0b0f19;
+      --bg-card: rgba(23, 29, 44, 0.72);
+      --bg-card-hover: rgba(30, 38, 58, 0.88);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.2);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      
+      /* Brand Colors */
+      --ig-gradient: linear-gradient(135deg, #4f5bd5 0%, #962fbf 30%, #d62976 60%, #fa7e1e 85%, #feda75 100%);
+      --ig-glow: rgba(214, 41, 118, 0.35);
+      --wa-color: #25D366;
+      --wa-dark: #128C7E;
+      --wa-glow: rgba(37, 211, 102, 0.35);
+
+      /* Typography & Easing */
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      position: relative;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Ambient Background Lights */
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(110px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+    }
+
+    .ambient-glow-1 {
+      width: 380px;
+      height: 380px;
+      top: 10%;
+      left: 15%;
+      background: radial-gradient(circle, rgba(214, 41, 118, 0.38) 0%, rgba(150, 47, 191, 0.15) 60%, transparent 80%);
+    }
+
+    .ambient-glow-2 {
+      width: 420px;
+      height: 420px;
+      bottom: 12%;
+      right: 15%;
+      background: radial-gradient(circle, rgba(37, 211, 102, 0.32) 0%, rgba(18, 140, 126, 0.12) 60%, transparent 80%);
+    }
+
+    /* Main Container Card */
+    .contact-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 540px;
+      background: var(--bg-card);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 32px;
+      padding: 48px 36px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      text-align: center;
+      animation: containerFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes containerFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Profile / Header Area */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--wa-color);
+      box-shadow: 0 0 10px var(--wa-color);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .page-subtitle {
+      font-size: 0.975rem;
+      color: var(--text-muted);
+      margin-bottom: 38px;
+      line-height: 1.5;
+    }
+
+    /* Centered Logos & Actions Grid */
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 8px;
+    }
+
+    /* Interactive Contact Card */
+    .contact-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 18px 26px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      outline: none;
+      transition: var(--transition-smooth);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-card:focus-visible {
+      border-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+    }
+
+    /* Icon Container */
+    .icon-wrapper {
+      position: relative;
+      width: 76px;
+      height: 76px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 22px;
+      transition: var(--transition-bounce);
+    }
+
+    .brand-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .card-label {
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .card-hint {
+      font-size: 0.8125rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.3s ease;
+    }
+
+    .card-hint svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2;
+    }
+
+    /* Instagram Specific Hover Effects */
+    .instagram-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(214, 41, 118, 0.5);
+      box-shadow: 0 16px 36px -8px var(--ig-glow),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    }
+
+    .instagram-card:hover .icon-wrapper {
+      transform: scale(1.08);
+      filter: drop-shadow(0 8px 20px var(--ig-glow));
+    }
+
+    .instagram-card:hover .card-hint {
+      color: #fca5a5;
+    }
+
+    .instagram-card:active {
+      transform: translateY(-2px) scale(0.98);
+      transition-duration: 0.1s;
+    }
+
+    /* WhatsApp Specific Hover Effects */
+    .whatsapp-card {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--border-subtle);
+      font-family: inherit;
+    }
+
+    .whatsapp-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(37, 211, 102, 0.5);
+      box-shadow: 0 16px 36px -8px var(--wa-glow),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    }
+
+    .whatsapp-card:hover .icon-wrapper {
+      transform: scale(1.08);
+      filter: drop-shadow(0 8px 20px var(--wa-glow));
+    }
+
+    .whatsapp-card:hover .card-hint {
+      color: #86efac;
+    }
+
+    .whatsapp-card:active {
+      transform: translateY(-2px) scale(0.98);
+      transition-duration: 0.1s;
+    }
+
+    /* Modal / Popup Panel for WhatsApp */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 11, 20, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .modal-backdrop.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .modal-panel {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      background: #131b2e;
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 28px;
+      padding: 36px 32px;
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.8),
+                  0 0 40px -10px var(--wa-glow),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      text-align: center;
+      transform: scale(0.92) translateY(12px);
+      transition: var(--transition-bounce);
+    }
+
+    .modal-backdrop.is-open .modal-panel {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Modal Close Button */
+    .modal-close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+      outline: none;
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      transform: rotate(90deg);
+    }
+
+    .modal-close-btn:focus-visible {
+      border-color: #ffffff;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Modal Content */
+    .modal-icon-badge {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px var(--wa-glow);
+    }
+
+    .modal-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .modal-desc {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    /* Username Copy Box */
+    .username-box {
+      background: rgba(11, 15, 25, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 10px 12px 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    .username-box:focus-within {
+      border-color: var(--wa-color);
+      box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.2);
+    }
+
+    .username-text {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      user-select: all;
+      word-break: break-all;
+    }
+
+    /* Copy Button */
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--wa-color);
+      color: #072a15;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 16px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      outline: none;
+      transition: var(--transition-smooth);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .copy-btn:hover {
+      background: #34e777;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+    }
+
+    .copy-btn:active {
+      transform: translateY(1px);
+    }
+
+    .copy-btn:focus-visible {
+      box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.4);
+    }
+
+    .copy-btn.copied {
+      background: #ffffff;
+      color: #0b0f19;
+    }
+
+    .copy-icon, .check-icon {
+      width: 16px;
+      height: 16px;
+      display: block;
+    }
+
+    .check-icon {
+      display: none;
+    }
+
+    .copy-btn.copied .copy-icon {
+      display: none;
+    }
+
+    .copy-btn.copied .check-icon {
+      display: block;
+    }
+
+    /* Copy Status Notification */
+    .copy-status-msg {
+      font-size: 0.8125rem;
+      color: var(--wa-color);
+      font-weight: 500;
+      min-height: 20px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    .copy-status-msg.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .modal-dismiss-btn {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+      padding: 12px 20px;
+      border-radius: 14px;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      outline: none;
+    }
+
+    .modal-dismiss-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .modal-dismiss-btn:focus-visible {
+      border-color: #ffffff;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 480px) {
+      .contact-container {
+        padding: 36px 20px;
+        border-radius: 28px;
+      }
+
+      .page-title {
+        font-size: 1.75rem;
+      }
+
+      .actions-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .contact-card {
+        padding: 24px 20px;
+        flex-direction: row;
+        text-align: left;
+        gap: 18px;
+      }
+
+      .icon-wrapper {
+        width: 58px;
+        height: 58px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+
+      .card-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-grow: 1;
+      }
+
+      .modal-panel {
+        padding: 30px 20px;
+      }
+
+      .username-box {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 14px;
+        text-align: center;
+      }
+
+      .copy-btn {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient background decorative lighting -->
+  <div class="ambient-glow ambient-glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow-2" aria-hidden="true"></div>
+
+  <!-- Main Personal Contact Card -->
+  <main class="contact-container">
+    
+    <!-- Status indicator badge -->
+    <div class="status-badge" aria-label="Status: Available for contact">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span>Available to connect</span>
+    </div>
+
+    <!-- Title and brief prompt -->
+    <h1 class="page-title">Get in Touch</h1>
+    <p class="page-subtitle">Select a platform below to reach out or connect directly.</p>
+
+    <!-- Centered Dual Contact Actions Grid -->
+    <div class="actions-grid">
+      
+      <!-- Instagram Action: Opens profile in a new tab -->
+      <a 
+        href="https://www.instagram.com/_aditya_azm__?srtk=aDl0MDVvdTE1cmp6" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="contact-card instagram-card"
+        id="instagramLink"
+        aria-label="Visit Aditya on Instagram (opens in a new tab)"
+      >
+        <div class="icon-wrapper">
+          <!-- Accurate Inline SVG Instagram Logo with Official Gradient & Camera Outline -->
+          <svg class="brand-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <radialGradient id="igGradient" cx="20%" cy="105%" r="125%">
+                <stop offset="0%" stop-color="#fdf497" />
+                <stop offset="10%" stop-color="#fdf497" />
+                <stop offset="50%" stop-color="#fd5949" />
+                <stop offset="70%" stop-color="#d6249f" />
+                <stop offset="100%" stop-color="#285AEB" />
+              </radialGradient>
+            </defs>
+            <!-- Rounded App Icon Background -->
+            <rect width="100" height="100" rx="24" fill="url(#igGradient)" />
+            <!-- Camera Outer Rounded Border -->
+            <rect x="22" y="22" width="56" height="56" rx="16" fill="none" stroke="#ffffff" stroke-width="6.5" />
+            <!-- Camera Center Lens -->
+            <circle cx="50" cy="50" r="13" fill="none" stroke="#ffffff" stroke-width="6.5" />
+            <!-- Camera Flash Dot -->
+            <circle cx="65.5" cy="34.5" r="3.5" fill="#ffffff" />
+          </svg>
+        </div>
+        <div class="card-info">
+          <span class="card-label">Instagram</span>
+          <span class="card-hint">
+            <span>Open Profile</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- WhatsApp Action: Opens custom modal panel showing username with copy button -->
+      <button 
+        type="button" 
+        class="contact-card whatsapp-card" 
+        id="openWhatsAppBtn"
+        aria-label="View Aditya's WhatsApp username"
+        aria-haspopup="dialog"
+        aria-controls="whatsappModal"
+      >
+        <div class="icon-wrapper">
+          <!-- Accurate Inline SVG WhatsApp Logo with Iconic Speech Bubble & Phone Handset -->
+          <svg class="brand-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Emerald Green Circular Background -->
+            <circle cx="50" cy="50" r="50" fill="#25D366" />
+            <!-- Speech Bubble Contour & Handset -->
+            <path fill="#ffffff" d="M50 20.8C33.9 20.8 20.8 33.9 20.8 50C20.8 55.4 22.3 60.6 25 65.2L20.8 79.2L35.2 75.1C39.6 77.6 44.7 79.2 50 79.2C66.1 79.2 79.2 66.1 79.2 50C79.2 33.9 66.1 20.8 50 20.8ZM50 74.2C45.4 74.2 41 73 37.1 70.7L36.3 70.1L27.7 72.4L30 64.2L29.4 63.2C26.9 59.2 25.6 54.7 25.6 50C25.6 36.6 36.6 25.6 50 25.6C63.4 25.6 74.4 36.6 74.4 50C74.4 63.4 63.4 74.2 50 74.2ZM63.3 58C62.5 57.6 59 55.9 58.3 55.7C57.7 55.5 57.3 55.3 56.9 55.9C56.5 56.5 55.1 58.2 54.7 58.6C54.3 59 53.9 59.2 53.1 58.8C52.5 58.4 50.2 57.6 47.5 55.2C45.4 53.3 44 51 43.6 50.2C43.2 49.6 43.6 49.2 44 48.8C44.4 48.4 44.8 48 45.2 47.6C45.6 47.2 45.7 46.8 46.1 46.4C46.3 46 46.1 45.6 45.9 45.2C45.7 44.8 44.3 41.4 43.8 40C43.2 38.5 42.6 38.7 42.2 38.7H41C40.6 38.7 39.8 38.9 39.2 39.5C38.6 40.1 36.7 42 36.7 45.5C36.7 49 39.2 52.3 39.6 52.8C40 53.2 44.8 60.5 52.1 63.6C53.8 64.4 55.2 64.9 56.3 65.3C58.2 65.7 59.9 65.7 61.2 65.5C62.7 65.3 65.6 63.7 66.2 62.1C66.8 60.4 66.8 58.8 66.6 58.6C66.2 58.4 65.8 58.4 63.3 58Z" />
+          </svg>
+        </div>
+        <div class="card-info">
+          <span class="card-label">WhatsApp</span>
+          <span class="card-hint">
+            <span>View Username</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+          </span>
+        </div>
+      </button>
+
+    </div>
+  </main>
+
+  <!-- WhatsApp Username Popup / Modal Dialog -->
+  <div 
+    class="modal-backdrop" 
+    id="whatsappModal" 
+    role="dialog" 
+    aria-modal="true" 
+    aria-labelledby="modalTitle" 
+    aria-describedby="modalDesc"
+  >
+    <div class="modal-panel" id="modalPanel">
+      
+      <!-- Close 'X' Button -->
+      <button type="button" class="modal-close-btn" id="closeModalBtn" aria-label="Close dialog">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Badge Icon -->
+      <div class="modal-icon-badge" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="50" fill="#25D366" />
+          <path fill="#ffffff" d="M50 20.8C33.9 20.8 20.8 33.9 20.8 50C20.8 55.4 22.3 60.6 25 65.2L20.8 79.2L35.2 75.1C39.6 77.6 44.7 79.2 50 79.2C66.1 79.2 79.2 66.1 79.2 50C79.2 33.9 66.1 20.8 50 20.8ZM50 74.2C45.4 74.2 41 73 37.1 70.7L36.3 70.1L27.7 72.4L30 64.2L29.4 63.2C26.9 59.2 25.6 54.7 25.6 50C25.6 36.6 36.6 25.6 50 25.6C63.4 25.6 74.4 36.6 74.4 50C74.4 63.4 63.4 74.2 50 74.2ZM63.3 58C62.5 57.6 59 55.9 58.3 55.7C57.7 55.5 57.3 55.3 56.9 55.9C56.5 56.5 55.1 58.2 54.7 58.6C54.3 59 53.9 59.2 53.1 58.8C52.5 58.4 50.2 57.6 47.5 55.2C45.4 53.3 44 51 43.6 50.2C43.2 49.6 43.6 49.2 44 48.8C44.4 48.4 44.8 48 45.2 47.6C45.6 47.2 45.7 46.8 46.1 46.4C46.3 46 46.1 45.6 45.9 45.2C45.7 44.8 44.3 41.4 43.8 40C43.2 38.5 42.6 38.7 42.2 38.7H41C40.6 38.7 39.8 38.9 39.2 39.5C38.6 40.1 36.7 42 36.7 45.5C36.7 49 39.2 52.3 39.6 52.8C40 53.2 44.8 60.5 52.1 63.6C53.8 64.4 55.2 64.9 56.3 65.3C58.2 65.7 59.9 65.7 61.2 65.5C62.7 65.3 65.6 63.7 66.2 62.1C66.8 60.4 66.8 58.8 66.6 58.6C66.2 58.4 65.8 58.4 63.3 58Z" />
+        </svg>
+      </div>
+
+      <h2 class="modal-title" id="modalTitle">WhatsApp Contact</h2>
+      <p class="modal-desc" id="modalDesc">Reach out to me on WhatsApp using the handle below:</p>
+
+      <!-- Display Box for WhatsApp Username -->
+      <div class="username-box">
+        <span class="username-text" id="targetUsername">@_Aditya_azm__i</span>
+        
+        <button type="button" class="copy-btn" id="copyUsernameBtn" aria-label="Copy username to clipboard">
+          <!-- Copy icon -->
+          <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <!-- Checkmark icon -->
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span id="copyBtnText">Copy</span>
+        </button>
+      </div>
+
+      <!-- Feedback status message -->
+      <div class="copy-status-msg" id="copyStatusMsg" role="status" aria-live="polite">
+        Username copied to clipboard!
+      </div>
+
+      <!-- Done / Dismiss Button -->
+      <button type="button" class="modal-dismiss-btn" id="dismissModalBtn">
+        Close
+      </button>
+
+    </div>
+  </div>
+
+  <script>
+    // DOM Elements
+    const instagramLink = document.getElementById('instagramLink');
+    const openWhatsAppBtn = document.getElementById('openWhatsAppBtn');
+    const whatsappModal = document.getElementById('whatsappModal');
+    const modalPanel = document.getElementById('modalPanel');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const dismissModalBtn = document.getElementById('dismissModalBtn');
+    const copyUsernameBtn = document.getElementById('copyUsernameBtn');
+    const copyBtnText = document.getElementById('copyBtnText');
+    const copyStatusMsg = document.getElementById('copyStatusMsg');
+    const targetUsername = document.getElementById('targetUsername');
+
+    let resetTimer = null;
+
+    // Open Modal
+    function openModal() {
+      whatsappModal.classList.add('is-open');
+      // Set focus to copy button for keyboard convenience
+      copyUsernameBtn.focus();
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close Modal
+    function closeModal() {
+      whatsappModal.classList.remove('is-open');
+      document.body.style.overflow = '';
+      // Return focus to trigger button
+      openWhatsAppBtn.focus();
+    }
+
+    // Copy to clipboard with modern API & robust fallback
+    async function copyToClipboard(text) {
+      let copied = false;
+
+      // Modern Clipboard API
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(text);
+          copied = true;
+        } catch (err) {
+          copied = false;
+        }
+      }
+
+      // Fallback for restricted iframes or older environments
+      if (!copied) {
+        try {
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.style.position = 'fixed';
+          textarea.style.left = '-9999px';
+          textarea.style.top = '0';
+          textarea.setAttribute('readonly', '');
+          document.body.appendChild(textarea);
+          textarea.select();
+          copied = document.execCommand('copy');
+          document.body.removeChild(textarea);
+        } catch (e) {
+          copied = false;
+        }
+      }
+
+      return copied;
+    }
+
+    // Handle Copy Click
+    async function handleCopy() {
+      const textToCopy = targetUsername.textContent.trim();
+      const success = await copyToClipboard(textToCopy);
+
+      if (success) {
+        copyUsernameBtn.classList.add('copied');
+        copyBtnText.textContent = 'Copied!';
+        copyStatusMsg.classList.add('is-visible');
+
+        if (resetTimer) clearTimeout(resetTimer);
+
+        resetTimer = setTimeout(() => {
+          copyUsernameBtn.classList.remove('copied');
+          copyBtnText.textContent = 'Copy';
+          copyStatusMsg.classList.remove('is-visible');
+        }, 2500);
+      }
+    }
+
+    // Instagram App Deep Linking with Web Fallback
+    const igUsername = '_aditya_azm__';
+    const igWebUrl = 'https://www.instagram.com/_aditya_azm__?srtk=aDl0MDVvdTE1cmp6';
+    const igAppScheme = `instagram://user?username=${igUsername}`;
+    const igAndroidIntent = `intent://instagram.com/_u/${igUsername}/#Intent;package=com.instagram.android;scheme=https;S.browser_fallback_url=${encodeURIComponent(igWebUrl)};end`;
+
+    instagramLink.addEventListener('click', (e) => {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
+      const isAndroid = /Android/i.test(userAgent);
+      const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+      const isMobile = isAndroid || isIOS || /mobile/i.test(userAgent);
+
+      if (isMobile) {
+        e.preventDefault();
+
+        if (isAndroid) {
+          // Android Chrome intent opens the Instagram app directly if installed,
+          // or automatically routes to browser_fallback_url if not installed.
+          window.location.href = igAndroidIntent;
+        } else {
+          // iOS & other mobile platforms: attempt custom URI scheme
+          let hasLeftPage = false;
+          const onVisibilityChange = () => {
+            if (document.hidden) {
+              hasLeftPage = true;
+            }
+          };
+          document.addEventListener('visibilitychange', onVisibilityChange, { once: true });
+          window.addEventListener('pagehide', () => { hasLeftPage = true; }, { once: true });
+
+          const start = Date.now();
+          window.location.href = igAppScheme;
+
+          // If the app is not installed, fallback to the web profile
+          setTimeout(() => {
+            document.removeEventListener('visibilitychange', onVisibilityChange);
+            if (!hasLeftPage && !document.hidden && (Date.now() - start) < 2500) {
+              window.location.href = igWebUrl;
+            }
+          }, 1500);
+        }
+      }
+      // On desktop, default anchor navigation with target="_blank" proceeds normally
+    });
+
+    // Event Listeners
+    openWhatsAppBtn.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+    dismissModalBtn.addEventListener('click', closeModal);
+    copyUsernameBtn.addEventListener('click', handleCopy);
+
+    // Close on backdrop click (click outside modal content)
+    whatsappModal.addEventListener('click', (event) => {
+      if (!modalPanel.contains(event.target)) {
+        closeModal();
+      }
+    });
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && whatsappModal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
